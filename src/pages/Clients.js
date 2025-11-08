@@ -152,10 +152,10 @@ const Clients = () => {
         <div className="container-custom">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Our <span className="gradient-text">Clients</span>
+              <span className="gradient-text">Portfolio</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              Discover how we've helped companies across industries achieve remarkable results through innovative digital solutions.
+              Apps, marketing campaigns, virtual product photography, and e‑commerce sites — real projects delivering measurable outcomes.
             </p>
           </div>
         </div>
@@ -356,4 +356,4 @@ const Clients = () => {
   );
 };
 
-export default Clients; 
+export default Clients;

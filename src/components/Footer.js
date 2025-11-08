@@ -5,12 +5,13 @@ import { Linkedin, Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
 const Footer = () => {
   const footerLinks = {
     services: [
-      { name: 'Ideation', href: '/services/ideation' },
-      { name: 'Software Development', href: '/services/development' },
-      { name: 'Design', href: '/services/design' },
-      { name: 'Generative AI and Data', href: '/services/ai' },
-      { name: 'Maintenance', href: '/services/maintenance' },
-      { name: 'Cooperation Models', href: '/services/cooperation' },
+      { name: 'App Development', href: '/services/app-development' },
+      { name: 'Social Media Marketing', href: '/services/social-media-marketing' },
+      { name: 'Meta/Instagram Ads', href: '/services/meta-instagram-ads' },
+      { name: 'Instagram Virtual Avatars', href: '/services/instagram-virtual-avatars' },
+      { name: 'Virtual AI Product Photography', href: '/services/virtual-ai-product-photography' },
+      { name: 'Shopping Websites / E-commerce', href: '/services/ecommerce' },
+      { name: 'Idea to Go Live', href: '/services/idea-to-go-live' },
     ],
     industries: [
       { name: 'Finance', href: '/industries/finance' },
@@ -72,6 +73,21 @@ const Footer = () => {
                   <social.icon className="w-5 h-5" />
                 </a>
               ))}
+            </div>
+
+            {/* Newsletter Subscription */}
+            <div className="mt-6">
+              <h4 className="font-semibold mb-2">Subscribe to our newsletter</h4>
+              <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
+                <input
+                  type="email"
+                  required
+                  placeholder="Your email"
+                  className="flex-1 bg-gray-900 border border-gray-800 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-700"
+                />
+                <button type="submit" className="btn-secondary px-4 py-2">Subscribe</button>
+              </form>
+              <p className="text-xs text-gray-400 mt-2">We’ll send occasional updates. Unsubscribe anytime.</p>
             </div>
           </div>
 
@@ -165,4 +181,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

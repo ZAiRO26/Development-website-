@@ -1,87 +1,108 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Palette, Brain, Settings, Users, Lightbulb } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Code, Megaphone, Target, Camera, ShoppingCart, Users, Lightbulb } from 'lucide-react';
 
 const Services = () => {
   const services = [
     {
-      icon: Lightbulb,
-      title: "Ideation",
-      description: "Identify, shape and validate your product idea",
-      features: [
-        "Product strategy and roadmap",
-        "Market research and validation",
-        "MVP definition and planning",
-        "Business model canvas",
-        "User research and personas"
-      ],
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
-    },
-    {
+      id: 'app-development',
       icon: Code,
-      title: "Software Development",
-      description: "Bring products to life with world-class engineering",
+      title: 'App Development',
+      description: 'Custom mobile and web apps built for industrial operations',
       features: [
-        "Web and mobile development",
-        "Cloud infrastructure",
-        "API development and integration",
-        "DevOps and CI/CD",
-        "Quality assurance and testing"
+        'iOS/Android and responsive web apps',
+        'Robust APIs and integrations',
+        'Scalable cloud architectures',
+        'CI/CD and testing automation',
+        'Security and compliance best practices',
       ],
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop"
+      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop',
     },
     {
-      icon: Palette,
-      title: "Design",
-      description: "Craft beautiful digital experiences across platforms",
+      id: 'social-media-marketing',
+      icon: Megaphone,
+      title: 'Social Media Marketing',
+      description: 'Content, scheduling, and account management for industrial brands',
       features: [
-        "UI/UX design",
-        "Design systems",
-        "Prototyping and wireframing",
-        "User research and testing",
-        "Brand identity design"
+        'Account setup and daily management',
+        'Content creation and calendars',
+        'Hashtag research and audience growth',
+        'Engagement workflows and moderation',
+        'Monthly analytics reports',
       ],
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop"
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
     },
     {
-      icon: Brain,
-      title: "Generative AI and Data",
-      description: "Leverage AI to transform your business processes",
+      id: 'meta-instagram-ads',
+      icon: Target,
+      title: 'Meta/Instagram Ads',
+      description: 'Targeted campaigns that drive qualified leads and conversions',
       features: [
-        "AI strategy and implementation",
-        "Machine learning models",
-        "Data analytics and insights",
-        "Natural language processing",
-        "Computer vision solutions"
+        'Audience targeting and lookalikes',
+        'Creative production and testing',
+        'Pixel setup and conversion tracking',
+        'A/B testing and budget optimization',
+        'Performance dashboards and insights',
       ],
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop"
+      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop',
     },
     {
-      icon: Settings,
-      title: "Maintenance",
-      description: "Safeguard your product's quality and reliability",
-      features: [
-        "Application monitoring",
-        "Performance optimization",
-        "Security updates",
-        "Bug fixes and support",
-        "Infrastructure management"
-      ],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
-    },
-    {
+      id: 'instagram-virtual-avatars',
       icon: Users,
-      title: "Cooperation Models",
-      description: "Choose the collaboration model that fits your needs",
+      title: 'Instagram Virtual Avatars',
+      description: 'Engaging digital personas for campaigns and brand storytelling',
       features: [
-        "Dedicated teams",
-        "Project-based development",
-        "Staff augmentation",
-        "Technical consulting",
-        "Agile development"
+        'Avatar concepting and design',
+        'Behavior scripts and voice',
+        'Content pipelines and scheduling',
+        'Compliance and brand safety',
+        'Performance tracking and iteration',
       ],
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop"
-    }
+      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop',
+    },
+    {
+      id: 'virtual-ai-product-photography',
+      icon: Camera,
+      title: 'Virtual AI Product Photography',
+      description: 'Studio-grade product imagery generated and enhanced with AI',
+      features: [
+        'Lighting and scene presets',
+        'Background removal and styling',
+        'Bulk image pipelines',
+        'Prompt engineering and QA',
+        'Brand-guideline consistency',
+      ],
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop',
+    },
+    {
+      id: 'ecommerce',
+      icon: ShoppingCart,
+      title: 'Shopping Websites / E-commerce',
+      description: 'High-converting storefronts tailored to industrial buyers',
+      features: [
+        'Storefront design and UX',
+        'Catalogs, variants, and pricing',
+        'Payments, logistics, and invoicing',
+        'SEO and performance optimization',
+        'Analytics and growth tactics',
+      ],
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
+    },
+    {
+      id: 'idea-to-go-live',
+      icon: Lightbulb,
+      title: 'Idea to Go Live',
+      description: 'Consulting and end-to-end project management from concept to launch',
+      features: [
+        'Discovery workshops and roadmaps',
+        'MVP scoping and prioritization',
+        'Vendor coordination and delivery',
+        'Risk management and governance',
+        'Launch planning and handover',
+      ],
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
+    },
   ];
 
   const caseStudies = [
@@ -105,28 +126,48 @@ const Services = () => {
     }
   ];
 
+  // Animation variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+  };
+  const stagger = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.12 } }
+  };
+  const cardVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 to-black section-padding">
+      <motion.section className="bg-gradient-to-br from-gray-900 to-black section-padding" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
         <div className="container-custom">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <motion.h1 className="text-5xl md:text-6xl font-bold text-white mb-6" variants={fadeInUp}>
               Our <span className="gradient-text">Services</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8">
+            </motion.h1>
+            <motion.p className="text-xl md:text-2xl text-gray-300 mb-8" variants={fadeInUp}>
               We provide end-to-end digital product development services to help you scale, innovate, and get ahead of the competition.
-            </p>
+            </motion.p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Services Grid */}
       <section className="section-padding bg-black">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
             {services.map((service) => (
-              <div key={service.title} className="group cursor-pointer bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-gray-800">
+              <motion.div
+                key={service.title}
+                id={service.id}
+                className="scroll-target group cursor-pointer bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-gray-800"
+                variants={cardVariant}
+                whileHover={{ y: -4 }}
+              >
                 <div className="p-8">
                   <div className="flex items-center justify-between mb-4">
                     <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
@@ -147,14 +188,16 @@ const Services = () => {
                     ))}
                   </ul>
                 </div>
-                <div className="p-6 bg-black">
-                  <Link to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`} className="font-semibold text-white hover:text-gray-300 transition-colors inline-flex items-center space-x-2">
-                    <span>Explore {service.title}</span>
+                <div className="p-6 bg-black flex items-center justify-between">
+                  <Link to={`/services/${service.id}`} className="font-semibold text-white hover:text-gray-300 transition-colors inline-flex items-center space-x-2">
+                    <span>View details</span>
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
+                  <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Request a quote</Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -260,4 +303,4 @@ const Services = () => {
   );
 };
 
-export default Services; 
+export default Services;

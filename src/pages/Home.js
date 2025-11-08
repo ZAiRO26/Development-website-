@@ -118,11 +118,11 @@ const Home = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60 z-10"></div>
         <div className="container-custom relative z-20">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              <span className="gradient-text">Accelerate</span> digital
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              One place for industrial business owners & service providers
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              We speed up AI adoption and ramp up engineering and design teams to help you lead your industry.
+            <p className="text-lg md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
+              From custom app development and social media marketing to Meta/Instagram ad campaigns, Instagram virtual avatars, virtual AI product photography, and high‑converting e‑commerce — we help you go from idea to live.
             </p>
             
             {/* Trusted By Section */}
@@ -140,13 +140,44 @@ const Home = () => {
             {/* CTA Section */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/contact" className="btn-primary text-lg px-8 py-4">
-                Estimate project
+                Request a quote
               </Link>
               <div className="flex items-center space-x-2 text-white hover:text-gray-300 cursor-pointer">
                 <Play className="w-5 h-5" />
                 <span className="font-semibold">Watch our story</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Services Overview */}
+      <section className="section-padding bg-black">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">What we do</h2>
+            <p className="text-gray-300 max-w-3xl mx-auto">
+              Practical, outcome‑focused services tailored to industrial businesses.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: 'App Development', href: '/services/app-development', blurb: 'Custom mobile/web apps built for operations.' },
+              { name: 'Social Media Marketing', href: '/services/social-media-marketing', blurb: 'Account management, content, scheduling.' },
+              { name: 'Meta/Instagram Ads', href: '/services/meta-instagram-ads', blurb: 'Targeted campaigns and optimization.' },
+              { name: 'Instagram Virtual Avatars', href: '/services/instagram-virtual-avatars', blurb: 'Engaging personas for brand storytelling.' },
+              { name: 'Virtual AI Product Photography', href: '/services/virtual-ai-product-photography', blurb: 'Studio‑grade imagery at scale.' },
+              { name: 'Shopping Websites / E‑commerce', href: '/services/ecommerce', blurb: 'High‑converting storefronts and catalogs.' },
+              { name: 'Idea to Go Live', href: '/services/idea-to-go-live', blurb: 'Consulting and end‑to‑end delivery.' },
+            ].map((svc) => (
+              <Link key={svc.name} to={svc.href} className="block bg-gray-900 border border-gray-800 rounded-xl p-6 hover:bg-gray-800 transition-colors">
+                <div className="flex items-start justify-between">
+                  <h3 className="text-xl font-semibold text-white">{svc.name}</h3>
+                  <ArrowRight className="w-5 h-5 text-gray-500" />
+                </div>
+                <p className="text-gray-400 mt-2">{svc.blurb}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -354,4 +385,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default Home;

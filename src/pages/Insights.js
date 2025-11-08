@@ -153,7 +153,7 @@ const Insights = () => {
               FreekiWebsite <span className="gradient-text">Insights</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              Explore our latest articles, expert opinions, and in-depth analysis on technology, design, and business.
+              Industry news, tips on digital marketing and app development, plus case studies to help you grow.
             </p>
           </div>
         </div>
@@ -348,4 +348,4 @@ const Insights = () => {
   );
 };
 
-export default Insights; 
+export default Insights;

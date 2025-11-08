@@ -91,11 +91,25 @@ const Contact = () => {
         <div className="container-custom">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Contact <span className="gradient-text">Us</span>
+              Talk to our <span className="gradient-text">Team</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              We're here to help. Reach out to us for any business inquiries, career opportunities, or media requests.
+              Get a quote or consultation for app development, social media marketing, ad campaigns, avatars, AI product photography, and e‑commerce.
             </p>
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+              <a href="#contact-form" className="btn-primary text-lg px-8 py-4">Request a Quote</a>
+              <a href="tel:+48221234567" className="btn-secondary bg-white text-black hover:bg-gray-100 text-lg px-8 py-4">Call +48 22 123 4567</a>
+            </div>
+            <div className="mt-6 flex flex-col md:flex-row justify-center items-center gap-6 text-gray-300">
+              <div className="flex items-center gap-2">
+                <Mail className="w-5 h-5 text-white" />
+                <a href="mailto:hello@freekiwebsite.com" className="hover:text-white">hello@freekiwebsite.com</a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-5 h-5 text-white" />
+                <a href="tel:+48221234567" className="hover:text-white">+48 22 123 4567</a>
+              </div>
+            </div>
           </div>
           
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -118,7 +132,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="section-padding bg-black">
+      <section id="contact-form" className="section-padding bg-black">
         <div className="container-custom max-w-4xl mx-auto">
           <div className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -194,11 +208,13 @@ const Contact = () => {
                   className="w-full px-4 py-3 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent bg-gray-900 text-white"
                 >
                   <option>Select a service</option>
-                  <option>AI Solutions</option>
-                  <option>Design</option>
-                  <option>Web Development</option>
-                  <option>Mobile Development</option>
-                  <option>Product Management</option>
+                  <option>App Development (Mobile/Web)</option>
+                  <option>Social Media Marketing</option>
+                  <option>Meta/Instagram Ads</option>
+                  <option>Instagram Virtual Avatars</option>
+                  <option>Virtual AI Product Photography</option>
+                  <option>Shopping Websites / E-commerce</option>
+                  <option>Idea to Go Live (Consulting)</option>
                   <option>Other</option>
                 </select>
               </div>
@@ -235,7 +251,7 @@ const Contact = () => {
                   type="submit"
                   className="btn-primary text-lg px-8 py-4"
                 >
-                  Send Message
+                  Request a Quote
                 </button>
               </div>
             </form>
@@ -329,4 +345,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;

@@ -65,12 +65,13 @@ const Navbar = () => {
   };
 
   const servicesItems = [
-    { name: 'Ideation', href: '/services/ideation' },
-    { name: 'Software Development', href: '/services/development' },
-    { name: 'Design', href: '/services/design' },
-    { name: 'Generative AI and Data', href: '/services/ai' },
-    { name: 'Maintenance', href: '/services/maintenance' },
-    { name: 'Cooperation Models', href: '/services/cooperation' },
+    { name: 'App Development', href: '/services/app-development' },
+    { name: 'Social Media Marketing', href: '/services/social-media-marketing' },
+    { name: 'Meta/Instagram Ads', href: '/services/meta-instagram-ads' },
+    { name: 'Instagram Virtual Avatars', href: '/services/instagram-virtual-avatars' },
+    { name: 'Virtual AI Product Photography', href: '/services/virtual-ai-product-photography' },
+    { name: 'Shopping Websites / E-commerce', href: '/services/ecommerce' },
+    { name: 'Idea to Go Live', href: '/services/idea-to-go-live' },
   ];
 
   const industriesItems = [
@@ -276,4 +277,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

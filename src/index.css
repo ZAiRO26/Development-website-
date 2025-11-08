@@ -49,4 +49,8 @@
   .text-balance {
     text-wrap: balance;
   }
-} 
+  /* Offset anchor targets to account for sticky navbar height */
+  .scroll-target {
+    scroll-margin-top: 96px; /* adjust if navbar height changes */
+  }
+}

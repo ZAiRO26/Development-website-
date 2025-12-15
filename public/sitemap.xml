@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/</loc></url>
+  <url><loc>https://example.com/services</loc></url>
+  <url><loc>https://example.com/services/app-development</loc></url>
+  <url><loc>https://example.com/services/social-media-marketing</loc></url>
+  <url><loc>https://example.com/services/meta-instagram-ads</loc></url>
+  <url><loc>https://example.com/services/instagram-virtual-avatars</loc></url>
+  <url><loc>https://example.com/services/virtual-ai-product-photography</loc></url>
+  <url><loc>https://example.com/services/ecommerce</loc></url>
+  <url><loc>https://example.com/services/idea-to-go-live</loc></url>
+  <url><loc>https://example.com/industries</loc></url>
+  <url><loc>https://example.com/industries/finance</loc></url>
+  <url><loc>https://example.com/industries/commerce</loc></url>
+  <url><loc>https://example.com/industries/healthcare</loc></url>
+  <url><loc>https://example.com/industries/education</loc></url>
+  <url><loc>https://example.com/industries/proptech</loc></url>
+  <url><loc>https://example.com/industries/greentech</loc></url>
+  <url><loc>https://example.com/clients</loc></url>
+  <url><loc>https://example.com/clients/case-studies</loc></url>
+  <url><loc>https://example.com/clients/projects</loc></url>
+  <url><loc>https://example.com/about</loc></url>
+  <url><loc>https://example.com/about/how-we-work</loc></url>
+  <url><loc>https://example.com/about/sustainability</loc></url>
+  <url><loc>https://example.com/about/careers</loc></url>
+  <url><loc>https://example.com/about/jobs</loc></url>
+  <url><loc>https://example.com/about/press</loc></url>
+  <url><loc>https://example.com/about/refer</loc></url>
+  <url><loc>https://example.com/insights</loc></url>
+  <url><loc>https://example.com/insights/blog</loc></url>
+  <url><loc>https://example.com/insights/newsletters</loc></url>
+  <url><loc>https://example.com/contact</loc></url>
+</urlset>

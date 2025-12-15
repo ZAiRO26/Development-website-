@@ -223,8 +223,6 @@ export const ParallaxSection = ({ children, className = '', speed = 0.5 }) => {
 
 // Counter animation for stats
 export const AnimatedCounter = ({ value, className = '', duration = 2 }) => {
-    const numValue = parseInt(value.replace(/\D/g, ''), 10) || 0;
-    const suffix = value.replace(/[0-9]/g, '');
 
     return (
         <motion.span

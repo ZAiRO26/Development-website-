@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play, Code, Palette, Brain, Smartphone, Globe, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
-import AnimatedSection, { AnimatedItem, FadeUp, PopIn, FloatingElement } from '../components/AnimatedSection';
+import AnimatedSection, { AnimatedItem, FadeUp, FloatingElement } from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
 
 const Home = () => {

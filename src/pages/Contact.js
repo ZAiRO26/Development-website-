@@ -45,25 +45,22 @@ const Contact = () => {
       icon: Briefcase,
       title: "Business Inquiries",
       description: "Let's talk about your project and how we can help you grow.",
-      contact: "hello@freekiwebsite.com",
-      link: "mailto:hello@freekiwebsite.com",
-      gradient: "from-blue-500 to-cyan-500"
+      contact: "hello@vedaviks.com",
+      link: "mailto:hello@vedaviks.com",
     },
     {
       icon: Users,
       title: "Careers",
       description: "Join our team of talented professionals and shape the future.",
-      contact: "careers@freekiwebsite.com",
-      link: "mailto:careers@freekiwebsite.com",
-      gradient: "from-purple-500 to-pink-500"
+      contact: "careers@vedaviks.com",
+      link: "mailto:careers@vedaviks.com",
     },
     {
       icon: Megaphone,
       title: "Media & Press",
       description: "For all media inquiries, please get in touch with our team.",
-      contact: "press@freekiwebsite.com",
-      link: "mailto:press@freekiwebsite.com",
-      gradient: "from-orange-500 to-amber-500"
+      contact: "press@vedaviks.com",
+      link: "mailto:press@vedaviks.com",
     }
   ];
 
@@ -92,7 +89,7 @@ const Contact = () => {
       <section className="mesh-bg pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <motion.div
-            className="absolute top-1/4 right-1/4 w-96 h-96 bg-accent-cyan/20 rounded-full filter blur-[120px]"
+            className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full filter blur-[120px]"
             animate={{ x: [0, -30, 0], y: [0, 20, 0] }}
             transition={{ duration: 10, repeat: Infinity }}
           />
@@ -101,17 +98,17 @@ const Contact = () => {
         <div className="container-custom relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <FadeUp>
-              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-6">
+              <p className="text-primary font-medium tracking-widest uppercase mb-6">
                 Get In Touch
               </p>
             </FadeUp>
             <FadeUp delay={0.1}>
               <h1 className="section-title text-white mb-6 leading-tight">
-                Contact <span className="gradient-text">Us</span>
+                Contact <span className="text-primary">Us</span>
               </h1>
             </FadeUp>
             <FadeUp delay={0.2}>
-              <p className="text-xl text-neutral-slate max-w-2xl mx-auto leading-relaxed">
+              <p className="text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
                 We're here to help. Reach out to us for any business inquiries, career opportunities, or media requests.
               </p>
             </FadeUp>
@@ -126,14 +123,14 @@ const Contact = () => {
                   className="block bento-card text-center h-full group"
                   whileHover={{ scale: 1.02, y: -5 }}
                 >
-                  <div className={`icon-container mx-auto mb-6 bg-gradient-to-br ${method.gradient}`}>
-                    <method.icon className="w-6 h-6 text-white" />
+                  <div className="icon-container mx-auto mb-6 bg-primary/10 border border-primary/30">
+                    <method.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-accent-cyan transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
                     {method.title}
                   </h3>
-                  <p className="text-neutral-slate mb-4">{method.description}</p>
-                  <p className="text-accent-cyan font-medium">{method.contact}</p>
+                  <p className="text-white/60 mb-4">{method.description}</p>
+                  <p className="text-primary font-medium">{method.contact}</p>
                 </motion.a>
               </AnimatedItem>
             ))}
@@ -146,15 +143,15 @@ const Contact = () => {
         <div className="container-custom max-w-4xl mx-auto">
           <AnimatedSection className="text-center mb-12">
             <AnimatedItem>
-              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">Send a Message</p>
+              <p className="text-primary font-medium tracking-widest uppercase mb-4">Send a Message</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-white mb-4">
-                Start Your <span className="gradient-text">Project</span>
+                Start Your <span className="text-primary">Project</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="text-neutral-slate">
+              <p className="text-white/60">
                 Fill out the form below and we'll get back to you as soon as possible.
               </p>
             </AnimatedItem>
@@ -169,15 +166,15 @@ const Contact = () => {
                 className="glass-panel p-12 text-center"
               >
                 <motion.div
-                  className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6"
+                  className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2, type: "spring" }}
                 >
-                  <Send className="w-8 h-8 text-white" />
+                  <Send className="w-8 h-8 text-black" />
                 </motion.div>
                 <h3 className="text-2xl font-bold text-white mb-4">Thank you!</h3>
-                <p className="text-neutral-slate mb-8">
+                <p className="text-white/60 mb-8">
                   Your message has been sent successfully. We will be in touch shortly.
                 </p>
                 <MagneticButton onClick={() => setFormSubmitted(false)} variant="secondary">
@@ -200,7 +197,7 @@ const Contact = () => {
                       id="fullName"
                       name="fullName"
                       required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-slate focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors"
+                      className="w-full px-4 py-3 bg-surface border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                       placeholder="John Doe"
                     />
                   </div>
@@ -211,7 +208,7 @@ const Contact = () => {
                       id="email"
                       name="email"
                       required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-slate focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors"
+                      className="w-full px-4 py-3 bg-surface border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                       placeholder="john@company.com"
                     />
                   </div>
@@ -224,7 +221,7 @@ const Contact = () => {
                       type="text"
                       id="company"
                       name="company"
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-slate focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors"
+                      className="w-full px-4 py-3 bg-surface border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                       placeholder="Your Company"
                     />
                   </div>
@@ -234,7 +231,7 @@ const Contact = () => {
                       type="tel"
                       id="phone"
                       name="phone"
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-slate focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors"
+                      className="w-full px-4 py-3 bg-surface border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                       placeholder="+1 (555) 000-0000"
                     />
                   </div>
@@ -245,7 +242,7 @@ const Contact = () => {
                   <select
                     id="service"
                     name="service"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors"
+                    className="w-full px-4 py-3 bg-surface border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                   >
                     <option value="" className="bg-background-dark">Select a service</option>
                     <option value="ai" className="bg-background-dark">AI Solutions</option>
@@ -262,7 +259,7 @@ const Contact = () => {
                   <select
                     id="budget"
                     name="budget"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors"
+                    className="w-full px-4 py-3 bg-surface border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                   >
                     <option value="" className="bg-background-dark">Select a budget range</option>
                     <option value="25-50" className="bg-background-dark">$25k - $50k</option>
@@ -280,7 +277,7 @@ const Contact = () => {
                     name="message"
                     rows="5"
                     required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-slate focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-surface border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"
                     placeholder="Tell us about your project..."
                   ></textarea>
                 </div>
@@ -302,11 +299,11 @@ const Contact = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">Global Presence</p>
+              <p className="text-primary font-medium tracking-widest uppercase mb-4">Global Presence</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">
-                Our <span className="gradient-text">Offices</span>
+                Our <span className="text-primary">Offices</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -316,26 +313,26 @@ const Contact = () => {
               <AnimatedItem key={index}>
                 <motion.div
                   className="glass-panel p-8 h-full"
-                  whileHover={{ y: -5, boxShadow: '0 0 40px rgba(75, 163, 218, 0.2)' }}
+                  whileHover={{ y: -5, boxShadow: '0 0 40px rgba(252, 218, 105, 0.2)' }}
                 >
                   <h3 className="text-2xl font-bold text-white mb-1">{office.city}</h3>
-                  <p className="text-accent-cyan mb-6">{office.country}</p>
+                  <p className="text-primary mb-6">{office.country}</p>
                   <div className="space-y-4">
                     <div className="flex items-start space-x-3">
-                      <MapPin className="w-5 h-5 text-accent-cyan mt-0.5 flex-shrink-0" />
-                      <p className="text-neutral-slate">{office.address}</p>
+                      <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <p className="text-white/60">{office.address}</p>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <Phone className="w-5 h-5 text-accent-cyan flex-shrink-0" />
-                      <p className="text-neutral-slate">{office.phone}</p>
+                      <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                      <p className="text-white/60">{office.phone}</p>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <Mail className="w-5 h-5 text-accent-cyan flex-shrink-0" />
-                      <p className="text-neutral-slate">{office.email}</p>
+                      <Mail className="w-5 h-5 text-primary flex-shrink-0" />
+                      <p className="text-white/60">{office.email}</p>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <Clock className="w-5 h-5 text-accent-cyan flex-shrink-0" />
-                      <p className="text-neutral-slate">{office.hours}</p>
+                      <Clock className="w-5 h-5 text-primary flex-shrink-0" />
+                      <p className="text-white/60">{office.hours}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -350,11 +347,11 @@ const Contact = () => {
         <div className="container-custom max-w-4xl mx-auto">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">FAQ</p>
+              <p className="text-primary font-medium tracking-widest uppercase mb-4">FAQ</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">
-                Frequently Asked <span className="gradient-text">Questions</span>
+                Frequently Asked <span className="text-primary">Questions</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -364,7 +361,7 @@ const Contact = () => {
               <AnimatedItem key={index}>
                 <motion.div
                   className="glass-panel overflow-hidden"
-                  whileHover={{ borderColor: 'rgba(75, 163, 218, 0.3)' }}
+                  whileHover={{ borderColor: 'rgba(252, 218, 105, 0.3)' }}
                 >
                   <button
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
@@ -375,7 +372,7 @@ const Contact = () => {
                       animate={{ rotate: openFaq === index ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <ChevronDown className="w-5 h-5 text-accent-cyan flex-shrink-0" />
+                      <ChevronDown className="w-5 h-5 text-primary flex-shrink-0" />
                     </motion.div>
                   </button>
                   <AnimatePresence>
@@ -386,7 +383,7 @@ const Contact = () => {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <p className="px-6 pb-6 text-neutral-slate leading-relaxed">
+                        <p className="px-6 pb-6 text-white/60 leading-relaxed">
                           {faq.answer}
                         </p>
                       </motion.div>
@@ -400,31 +397,31 @@ const Contact = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-navy-primary via-navy-secondary to-accent-cyan relative overflow-hidden">
+      <section className="section-padding bg-gradient-to-br from-surface via-surface-light to-primary/20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_rgba(255,255,255,0.1)_0%,_transparent_50%)]" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_rgba(123,143,163,0.15)_0%,_transparent_50%)]" />
         </div>
 
         <div className="container-custom relative z-10">
           <AnimatedSection className="text-center">
             <AnimatedItem>
-              <h2 className="section-title text-white mb-6">
+              <h2 className="section-title text-text-primary mb-6">
                 Have a Project in Mind?{' '}
-                <span className="text-background-dark">Let's Talk.</span>
+                <span className="text-primary">Let's Talk.</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+              <p className="text-xl text-text-secondary mb-10 max-w-2xl mx-auto">
                 We're always excited to hear about new ideas and challenges.
               </p>
             </AnimatedItem>
             <AnimatedItem>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <MagneticButton className="bg-white text-navy-primary hover:bg-white/90">
+                <MagneticButton variant="cta">
                   Get a Free Consultation
                   <ArrowRight className="inline-block ml-2 w-4 h-4" />
                 </MagneticButton>
-                <MagneticButton to="/services" variant="secondary" className="border-white/30 hover:border-white">
+                <MagneticButton to="/services" variant="secondary">
                   Explore Services
                 </MagneticButton>
               </div>

@@ -6,35 +6,54 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // New Matte Yellow & Black Theme
+        // Modern Professional Dark + Violet Theme
+        // Inspired by Linear, Stripe, Vercel
         primary: {
-          DEFAULT: '#FCDA69', // Matte Yellow
-          hover: '#E5C558',
-          light: '#FDE48B',
+          DEFAULT: '#8B5CF6', // Vibrant Violet
+          hover: '#A78BFA',   // Lighter violet on hover
+          light: '#C4B5FD',
+          dark: '#7C3AED',
+          muted: '#6D28D9',
+        },
+        secondary: {
+          DEFAULT: '#06B6D4', // Cyan accent for variety
+          hover: '#22D3EE',
+          dark: '#0891B2',
         },
         background: {
-          dark: '#000000', // Deep Black
-          card: '#111111', // Dark Grey Surface
-          light: '#FFFFFF',
+          dark: '#0F0F14',    // Rich charcoal (not pure black)
+          DEFAULT: '#0F0F14',
+          card: '#18181F',    // Elevated surface
+          elevated: '#1F1F28', // Cards and modals
         },
         surface: {
-          DEFAULT: '#111111',
-          hover: '#1A1A1A',
-        },
-        // Mapping legacy names to new palette to prevent breakage
-        navy: {
-          primary: '#000000',
-          secondary: '#111111',
-          dark: '#000000',
+          DEFAULT: '#18181F', // Card backgrounds
+          hover: '#1F1F28',
+          light: '#25252F',
+          border: '#2A2A35',
         },
         accent: {
-          cyan: '#FCDA69',
-          purple: '#FFFFFF',
+          violet: '#8B5CF6',  // Primary accent
+          purple: '#A855F7',  // Secondary accent
+          cyan: '#06B6D4',    // Tertiary accent
+          pink: '#EC4899',    // Highlight
+          emerald: '#10B981', // Success states
+        },
+        text: {
+          primary: '#FAFAFA',   // Almost white
+          secondary: '#A1A1AA', // Muted text (zinc-400)
+          muted: '#71717A',     // Very muted (zinc-500)
+        },
+        // Legacy mappings
+        navy: {
+          primary: '#0F0F14',
+          secondary: '#18181F',
+          dark: '#09090B',
         },
         neutral: {
-          slate: '#9CA3AF',
-          light: '#F3F4F6',
-        }
+          slate: '#A1A1AA',
+          light: '#D4D4D8',
+        },
       },
       fontFamily: {
         sans: ['Poppins', 'system-ui', 'sans-serif'],
@@ -44,21 +63,24 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-glow': 'radial-gradient(circle at center, rgba(252, 218, 105, 0.15) 0%, rgba(0, 0, 0, 0) 70%)',
-        'card-gradient': 'linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%)',
-        // Legacy gradients mapped to solid/subtle
-        'gradient-cta': 'linear-gradient(135deg, #FCDA69 0%, #E5C558 100%)',
-        'mesh-bg': 'radial-gradient(at 0% 0%, rgba(252, 218, 105, 0.05) 0px, transparent 50%)',
+        'hero-glow': 'radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, rgba(15, 15, 20, 0) 70%)',
+        'card-gradient': 'linear-gradient(180deg, rgba(139, 92, 246, 0.05) 0%, rgba(15, 15, 20, 0) 100%)',
+        'gradient-accent': 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+        'gradient-cta': 'linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%)',
       },
       boxShadow: {
-        'glow': '0 0 20px rgba(252, 218, 105, 0.15)',
-        'glow-lg': '0 0 40px rgba(252, 218, 105, 0.2)',
-        'glow-sm': '0 0 10px rgba(252, 218, 105, 0.1)',
+        'glow': '0 0 40px rgba(139, 92, 246, 0.25)',
+        'glow-lg': '0 0 60px rgba(139, 92, 246, 0.35)',
+        'glow-sm': '0 0 20px rgba(139, 92, 246, 0.15)',
+        'glow-cyan': '0 0 40px rgba(6, 182, 212, 0.25)',
+        'card': '0 4px 24px rgba(0, 0, 0, 0.4)',
+        'elevated': '0 8px 40px rgba(0, 0, 0, 0.5)',
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'scroll': 'scroll 40s linear infinite',
+        'shimmer': 'shimmer 2s linear infinite',
       },
       keyframes: {
         float: {
@@ -68,6 +90,10 @@ module.exports = {
         scroll: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
         },
       },
     },

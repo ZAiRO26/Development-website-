@@ -2,58 +2,41 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play, Code, Palette, Brain, Smartphone, Globe, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
-import AnimatedSection, { AnimatedItem, FadeUp } from '../components/AnimatedSection';
+import AnimatedSection, { AnimatedItem, FadeUp, PopIn, FloatingElement } from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
-import LogoMarquee from '../components/LogoMarquee';
 
 const Home = () => {
-  const trustedByLogos = [
-    { name: 'Microsoft', text: 'MICROSOFT' },
-    { name: 'Google', text: 'GOOGLE' },
-    { name: 'Amazon', text: 'AMAZON' },
-    { name: 'Netflix', text: 'NETFLIX' },
-    { name: 'Spotify', text: 'SPOTIFY' },
-    { name: 'Apple', text: 'APPLE' },
-    { name: 'Meta', text: 'META' },
-    { name: 'Uber', text: 'UBER' },
-  ];
 
   const services = [
     {
       icon: Globe,
       title: 'Web Development',
       desc: 'Stunning, responsive websites that convert visitors into customers',
-      gradient: 'from-blue-500 to-cyan-400'
     },
     {
       icon: Smartphone,
       title: 'Mobile Apps',
       desc: 'Native and cross-platform mobile experiences',
-      gradient: 'from-purple-500 to-pink-400'
     },
     {
       icon: Brain,
       title: 'AI Solutions',
       desc: 'Transform your business with cutting-edge AI integration',
-      gradient: 'from-orange-500 to-yellow-400'
     },
     {
       icon: Code,
       title: 'Custom Software',
       desc: 'Tailored solutions built for your unique challenges',
-      gradient: 'from-green-500 to-emerald-400'
     },
     {
       icon: Palette,
       title: 'UI/UX Design',
       desc: 'Beautiful interfaces that users love to interact with',
-      gradient: 'from-pink-500 to-rose-400'
     },
     {
       icon: Zap,
       title: 'Digital Strategy',
       desc: 'Data-driven strategies for digital transformation',
-      gradient: 'from-violet-500 to-indigo-400'
     },
   ];
 
@@ -87,27 +70,24 @@ const Home = () => {
     },
   ];
 
-  const testimonials = [
+  const teamMembers = [
     {
-      name: "Mark Greiner",
-      role: "Digital Innovation Manager",
-      company: "Merck",
-      quote: "Excellence and speed. It's rare to get both, and FreekiWebsite delivers.",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
+      name: "Ravi Saxena",
+      role: "Owner",
+      description: "Leads vision, strategy, and client success.",
+      avatar: "/team-ravi.png"
     },
     {
-      name: "Adi Pavlovic",
-      role: "Director of Innovation",
-      company: "Keller Williams",
-      quote: "FreekiWebsite has been the best agency we've worked with so far.",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face"
+      name: "Shikhar Saxena",
+      role: "Marketing & Sales Head",
+      description: "Drives growth, partnerships, and revenue.",
+      avatar: "/team-shikhar.jpg"
     },
     {
-      name: "Dally Singh",
-      role: "Chief Product Officer",
-      company: "Total Processing",
-      quote: "It doesn't feel like an external team, it feels like we're just working together.",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
+      name: "Priya Sharma",
+      role: "Digital & Social Media Lead",
+      description: "Owns content, social, and digital campaigns.",
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=face"
     }
   ];
 
@@ -141,7 +121,7 @@ const Home = () => {
           <div className="text-center max-w-5xl mx-auto">
             <FadeUp delay={0.2}>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
-                Your Vision, <span className="gradient-text">Engineered.</span>
+                Your Vision, <span className="text-primary">Engineered.</span>
               </h1>
             </FadeUp>
 
@@ -162,7 +142,7 @@ const Home = () => {
                   to="/services"
                   className="flex items-center space-x-3 text-white/80 hover:text-white transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-accent-cyan group-hover:shadow-glow-sm transition-all duration-300">
+                  <div className="w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-primary group-hover:shadow-glow-sm transition-all duration-300">
                     <Play className="w-4 h-4 ml-0.5" />
                   </div>
                   <span className="font-medium">View Services</span>
@@ -172,14 +152,7 @@ const Home = () => {
           </div>
 
           {/* Trusted By Logo Marquee */}
-          <FadeUp delay={1}>
-            <div className="mt-12">
-              <p className="text-center text-sm text-neutral-slate uppercase tracking-widest mb-8 font-medium">
-                Trusted by industry leaders
-              </p>
-              <LogoMarquee logos={trustedByLogos} speed={30} />
-            </div>
-          </FadeUp>
+
         </div>
 
         {/* Scroll indicator */}
@@ -190,7 +163,7 @@ const Home = () => {
         >
           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
             <motion.div
-              className="w-1.5 h-3 bg-accent-cyan rounded-full"
+              className="w-1.5 h-3 bg-primary rounded-full"
               animate={{ y: [0, 12, 0], opacity: [1, 0.5, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
@@ -203,11 +176,11 @@ const Home = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">What We Do</p>
+              <p className="text-primary font-medium tracking-widest uppercase mb-4">What We Do</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">
-                Comprehensive <span className="gradient-text">Digital Services</span>
+                Comprehensive <span className="text-primary">Digital Services</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
@@ -226,16 +199,16 @@ const Home = () => {
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className={`icon-container mb-6 bg-gradient-to-br ${service.gradient}`}>
-                    <service.icon className="w-6 h-6 text-white" />
+                  <div className="icon-container mb-6 bg-primary/10 border border-primary/30">
+                    <service.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-accent-cyan transition-colors">
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-neutral-slate leading-relaxed">
+                  <p className="text-white/60 leading-relaxed">
                     {service.desc}
                   </p>
-                  <div className="mt-6 flex items-center text-accent-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="mt-6 flex items-center text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span className="font-medium">Learn more</span>
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </div>
@@ -251,11 +224,11 @@ const Home = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">Our Work</p>
+              <p className="text-primary font-medium tracking-widest uppercase mb-4">Our Work</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">
-                Design, Engineering & <span className="gradient-text">Applied AI</span>
+                Design, Engineering & <span className="text-primary">Applied AI</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
@@ -281,7 +254,7 @@ const Home = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-background-dark/20 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
-                      <span className="inline-block px-3 py-1 bg-accent-cyan/20 text-accent-cyan text-sm font-medium rounded-full backdrop-blur-sm">
+                      <span className="inline-block px-3 py-1 bg-primary/20 text-primary text-sm font-medium rounded-full backdrop-blur-sm">
                         {study.category}
                       </span>
                     </div>
@@ -292,10 +265,10 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-accent-cyan transition-colors mb-3 line-clamp-2">
+                  <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors mb-3 line-clamp-2">
                     {study.title}
                   </h3>
-                  <p className="text-neutral-slate line-clamp-2">{study.subtitle}</p>
+                  <p className="text-white/60 line-clamp-2">{study.subtitle}</p>
                 </motion.div>
               </AnimatedItem>
             ))}
@@ -316,7 +289,7 @@ const Home = () => {
       <section className="section-padding bg-background-dark relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-navy-primary/20 rounded-full filter blur-[150px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full filter blur-[150px]" />
         </div>
 
         <div className="container-custom relative z-10">
@@ -333,7 +306,7 @@ const Home = () => {
                   >
                     {stat.value}
                   </motion.p>
-                  <p className="text-neutral-slate font-medium">{stat.label}</p>
+                  <p className="text-white/60 font-medium">{stat.label}</p>
                 </div>
               </AnimatedItem>
             ))}
@@ -341,40 +314,53 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="section-padding mesh-bg">
-        <div className="container-custom">
+      {/* Meet Our Team Section */}
+      <section className="section-padding bg-background-dark relative overflow-hidden">
+        {/* Floating decorative elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <FloatingElement className="absolute top-20 left-10" delay={0} amplitude={20}>
+            <div className="w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
+          </FloatingElement>
+          <FloatingElement className="absolute bottom-20 right-10" delay={1} amplitude={15}>
+            <div className="w-48 h-48 bg-secondary/5 rounded-full blur-3xl" />
+          </FloatingElement>
+        </div>
+
+        <div className="container-custom relative z-10">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">Client Stories</p>
-            </AnimatedItem>
-            <AnimatedItem>
               <h2 className="section-title text-white mb-6">
-                What Our <span className="gradient-text">Clients Say</span>
+                Meet our <span className="text-gradient">Team</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
 
-          <AnimatedSection className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerChildren={0.15}>
-            {testimonials.map((testimonial, index) => (
-              <AnimatedItem key={index}>
+          <AnimatedSection className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerChildren={0.2}>
+            {teamMembers.map((member, index) => (
+              <AnimatedItem key={index} direction="scale">
                 <motion.div
-                  className="glass-panel-hover p-8 h-full"
-                  whileHover={{ y: -5 }}
+                  className="glass-panel-hover p-8 h-full rounded-2xl group cursor-pointer"
+                  whileHover={{
+                    y: -10,
+                    scale: 1.02,
+                    boxShadow: '0 25px 50px rgba(139, 92, 246, 0.15)'
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   <div className="flex items-center mb-6">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-14 h-14 rounded-full object-cover mr-4 border-2 border-accent-cyan/30"
+                    <motion.img
+                      src={member.avatar}
+                      alt={member.name}
+                      className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-primary/30 group-hover:border-primary transition-colors duration-300"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
                     />
                     <div>
-                      <h4 className="font-bold text-white">{testimonial.name}</h4>
-                      <p className="text-sm text-neutral-slate">{testimonial.role}</p>
-                      <p className="text-sm font-medium text-accent-cyan">{testimonial.company}</p>
+                      <h4 className="font-bold text-white text-lg group-hover:text-primary transition-colors duration-300">{member.name}</h4>
+                      <p className="text-sm text-primary font-medium">{member.role}</p>
                     </div>
                   </div>
-                  <p className="text-white/80 italic leading-relaxed">"{testimonial.quote}"</p>
+                  <p className="text-text-secondary leading-relaxed">{member.description}</p>
                 </motion.div>
               </AnimatedItem>
             ))}
@@ -383,28 +369,28 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-navy-primary via-navy-secondary to-accent-cyan relative overflow-hidden">
+      <section className="section-padding bg-gradient-to-br from-surface via-surface-light to-primary/20 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.1)_0%,_transparent_50%)]" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full filter blur-[100px]" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(123,143,163,0.15)_0%,_transparent_50%)]" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/10 rounded-full filter blur-[100px]" />
         </div>
 
         <div className="container-custom relative z-10">
           <AnimatedSection className="text-center">
             <AnimatedItem>
-              <h2 className="section-title text-white mb-6">
+              <h2 className="section-title text-text-primary mb-6">
                 Ready to Build Something <br className="hidden md:block" />
-                <span className="text-background-dark">Amazing?</span>
+                <span className="text-primary">Amazing?</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+              <p className="text-xl text-text-secondary mb-10 max-w-2xl mx-auto">
                 Let's discuss your project and see how we can help you achieve your digital goals.
               </p>
             </AnimatedItem>
             <AnimatedItem>
-              <MagneticButton to="/contact" variant="primary" className="bg-white text-navy-primary hover:bg-white/90 hover:shadow-lg">
+              <MagneticButton to="/contact" variant="cta">
                 Start Your Project Today
                 <ArrowRight className="inline-block ml-2 w-5 h-5" />
               </MagneticButton>

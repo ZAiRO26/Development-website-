@@ -7,74 +7,120 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #000000;
+    background-color: #0F0F14;
   }
 
   body {
-    @apply bg-background-dark text-white font-body antialiased;
+    @apply bg-background-dark text-text-primary font-body antialiased;
     overflow-x: hidden;
   }
 
-  /* Custom Scrollbar */
+  /* Custom Scrollbar - Violet accent */
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-background-dark;
+    background-color: #0F0F14;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #FCDA69;
+    background: linear-gradient(180deg, #8B5CF6 0%, #6D28D9 100%);
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #E5C558;
+    background: linear-gradient(180deg, #A78BFA 0%, #8B5CF6 100%);
   }
 
   ::selection {
-    background-color: rgba(252, 218, 105, 0.3);
-    color: #FCDA69;
+    background-color: rgba(139, 92, 246, 0.4);
+    color: #FAFAFA;
   }
 }
 
 @layer components {
 
-  /* Buttons */
+  /* Primary Button - Gradient */
   .btn-primary {
-    @apply px-8 py-4 bg-primary text-black font-semibold rounded-xl transition-all duration-300 hover:bg-primary-hover transform hover:-translate-y-1 hover:shadow-glow;
+    @apply px-8 py-4 font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-glow;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    color: white;
   }
 
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #A78BFA 0%, #8B5CF6 100%);
+  }
+
+  /* Secondary Button - Outline */
   .btn-secondary {
-    @apply px-8 py-4 bg-transparent border-2 border-primary text-primary font-semibold rounded-xl transition-all duration-300 hover:bg-primary hover:text-black transform hover:-translate-y-1;
+    @apply px-8 py-4 bg-transparent border-2 border-primary/50 text-primary font-semibold rounded-xl transition-all duration-300 hover:bg-primary/10 hover:border-primary transform hover:-translate-y-1;
   }
 
+  /* CTA Button - Eye-catching gradient */
   .btn-cta {
-    @apply px-6 py-3 bg-primary text-black font-semibold rounded-lg transition-all duration-300 hover:bg-primary-hover hover:shadow-glow transform hover:scale-105;
+    @apply px-6 py-3 font-semibold rounded-lg transition-all duration-300 hover:shadow-glow transform hover:scale-105;
+    background: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
+    color: white;
+  }
+
+  .btn-cta:hover {
+    background: linear-gradient(135deg, #A78BFA 0%, #22D3EE 100%);
   }
 
   .btn-get-in-touch {
-    @apply px-6 py-2.5 bg-primary text-black font-bold rounded-lg transition-all duration-300 hover:bg-primary-hover hover:shadow-glow hover:-translate-y-0.5;
+    @apply px-6 py-2.5 font-bold rounded-lg transition-all duration-300 hover:shadow-glow hover:-translate-y-0.5;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    color: white;
   }
 
-  /* Cards & Panels - Matte/Solid Style */
+  /* Cards & Panels - Subtle gradient border */
   .glass-panel {
-    @apply bg-background-card border border-white/10 backdrop-blur-none;
+    @apply bg-surface border border-surface-border rounded-2xl;
+    background: linear-gradient(180deg, rgba(24, 24, 31, 1) 0%, rgba(15, 15, 20, 1) 100%);
+  }
+
+  .glass-panel:hover {
+    border-color: rgba(139, 92, 246, 0.3);
   }
 
   .bento-card {
-    @apply relative overflow-hidden rounded-3xl p-8 bg-background-card border border-white/10 transition-all duration-500 hover:border-primary/50;
+    @apply relative overflow-hidden rounded-2xl p-8 bg-surface border border-surface-border transition-all duration-500 hover:border-primary/40 hover:shadow-card;
   }
 
-  /* Text Styles */
+  .bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .bento-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Gradient Text */
   .text-gradient {
-    @apply text-white;
-    /* Removed gradient text for matte look */
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
   }
 
-  .text-gradient-primary {
-    @apply text-primary;
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold font-display leading-tight;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-text-secondary leading-relaxed;
   }
 
   .logo-font {
@@ -83,7 +129,7 @@
     font-weight: 700;
   }
 
-  /* Section Styles */
+  /* Layout */
   .container-custom {
     @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
   }
@@ -94,37 +140,55 @@
 
   /* Interactive elements */
   .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-2;
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-card;
   }
 
-  .shadow-glow {
-    box-shadow: 0 0 20px rgba(252, 218, 105, 0.15);
+  /* Icon container with gradient border */
+  .icon-container {
+    @apply w-14 h-14 rounded-2xl flex items-center justify-center;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+    border: 1px solid rgba(139, 92, 246, 0.3);
   }
 
-  .shadow-glow-sm {
-    box-shadow: 0 0 10px rgba(252, 218, 105, 0.1);
-  }
-
-  .shadow-glow-lg {
-    box-shadow: 0 0 40px rgba(252, 218, 105, 0.2);
-  }
-
-  /* Mesh Background Replacement (Solid/Matte) */
+  /* Background Variations */
   .mesh-bg {
-    @apply bg-background-dark;
+    background-color: #0F0F14;
     background-image:
-      radial-gradient(at 0% 0%, rgba(252, 218, 105, 0.05) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(252, 218, 105, 0.05) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.08) 0px, transparent 50%);
   }
 
   .gradient-navy-bg {
-    @apply bg-background-dark;
-    background-image: linear-gradient(180deg, #000000 0%, #111111 100%);
+    background: linear-gradient(180deg, #0F0F14 0%, #18181F 100%);
   }
 
-  /* Icon container */
-  .icon-container {
-    @apply w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg bg-surface border border-white/5;
+  /* Glow effects */
+  .shadow-glow {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.25);
+  }
+
+  .shadow-glow-sm {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+  }
+
+  .shadow-glow-lg {
+    box-shadow: 0 0 60px rgba(139, 92, 246, 0.35);
+  }
+
+  /* Glass panel hover */
+  .glass-panel-hover {
+    @apply bg-surface border border-surface-border rounded-2xl transition-all duration-300;
+  }
+
+  .glass-panel-hover:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
+  }
+
+  /* Stat value with gradient */
+  .stat-value {
+    @apply text-5xl md:text-6xl font-bold bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
   }
 }
 
@@ -134,10 +198,10 @@
 }
 
 .text-shadow-glow {
-  text-shadow: 0 0 20px rgba(252, 218, 105, 0.3);
+  text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
 }
 
-/* Animations included in tailwind config */
+/* Animations */
 .animate-float-slow {
   animation: float 8s ease-in-out infinite;
 }

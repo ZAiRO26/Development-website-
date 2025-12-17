@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 
 const WhatsAppFloatingButton = () => {
-    const phoneNumber = '+919876543210'; // Replace with actual WhatsApp number
+    const phoneNumber = '+919354785960';
     const message = 'Hello! I would like to know more about your services.';
 
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;

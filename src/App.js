@@ -23,6 +23,7 @@ import NotFound from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import WhatsAppFloatingButton from './components/WhatsAppFloatingButton';
+import GlobalChatbot from './components/GlobalChatbot';
 import SmoothScroll from './components/SmoothScroll';
 
 // Animated Routes component for page transitions
@@ -76,6 +77,7 @@ function App() {
             <AnimatedRoutes />
           </main>
           <Footer />
+          <GlobalChatbot />
           <WhatsAppFloatingButton />
           <ScrollToTopButton />
         </div>

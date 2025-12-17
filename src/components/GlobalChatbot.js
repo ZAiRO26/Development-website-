@@ -190,6 +190,7 @@ const GlobalChatbot = () => {
                     }
 
                     // Update the last message with streamed content
+                    // eslint-disable-next-line no-loop-func
                     setMessages(prev => {
                         const newMessages = [...prev];
                         newMessages[newMessages.length - 1] = {

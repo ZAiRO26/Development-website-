@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Minimize2, Maximize2, Bot } from 'lucide-react';
+import { MessageCircle, X, Send, Minimize2, Maximize2, Bot, ExternalLink } from 'lucide-react';
 
 // Typewriter Hook - Variable speed character rendering
 const useTypewriter = (text, isActive) => {
@@ -18,6 +18,7 @@ const useTypewriter = (text, isActive) => {
         setDisplayedText('');
         setIsTyping(true);
         let currentIndex = 0;
+        let timeoutId = null;
 
         const typeNextChar = () => {
             if (currentIndex < text.length) {
@@ -25,25 +26,24 @@ const useTypewriter = (text, isActive) => {
                 setDisplayedText(text.slice(0, currentIndex + 1));
                 currentIndex++;
 
-                // Variable speed: slower after punctuation
-                let delay = Math.random() * 30 + 20; // 20-50ms base
+                // Variable speed
+                let delay = Math.random() * 25 + 15; // 15-40ms base (faster)
                 if (['.', '!', '?'].includes(char)) {
-                    delay = 400; // 400ms pause after punctuation
+                    delay = 250; // Shorter pause
                 } else if ([',', ';', ':'].includes(char)) {
-                    delay = 150; // 150ms pause after comma
+                    delay = 100;
                 }
 
-                setTimeout(typeNextChar, delay);
+                timeoutId = setTimeout(typeNextChar, delay);
             } else {
                 setIsTyping(false);
             }
         };
 
-        // Start typing after a small delay
-        const startTimeout = setTimeout(typeNextChar, 50);
+        timeoutId = setTimeout(typeNextChar, 30);
 
         return () => {
-            clearTimeout(startTimeout);
+            if (timeoutId) clearTimeout(timeoutId);
             setIsTyping(false);
         };
     }, [text, isActive]);
@@ -60,25 +60,39 @@ const TypingIndicator = () => (
                 <motion.div
                     key={i}
                     className="w-1.5 h-1.5 bg-purple-400 rounded-full"
-                    animate={{
-                        y: [0, -6, 0],
-                        opacity: [0.5, 1, 0.5]
-                    }}
-                    transition={{
-                        duration: 0.6,
-                        repeat: Infinity,
-                        delay: i * 0.15
-                    }}
+                    animate={{ y: [0, -5, 0], opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.12 }}
                 />
             ))}
         </div>
     </div>
 );
 
+// Navigation Link Component (clickable, not auto-redirect)
+const NavLink = ({ path, children }) => {
+    const pathNames = {
+        '/contact': 'Contact Page',
+        '/insights/packages': 'Pricing Packages',
+        '/services': 'Our Services',
+        '/about': 'About Us'
+    };
+
+    return (
+        <Link
+            to={path}
+            className="inline-flex items-center gap-1 px-3 py-1.5 mt-2 bg-purple-600/30 hover:bg-purple-600/50 border border-purple-500/50 rounded-lg text-purple-300 hover:text-white text-sm transition-all"
+        >
+            <ExternalLink className="w-3.5 h-3.5" />
+            {children || pathNames[path] || path}
+        </Link>
+    );
+};
+
 // Message Component with Typewriter Effect
 const MessageBubble = ({ message, isLatest, onTypingComplete }) => {
     const isAssistant = message.role === 'assistant';
     const isSystem = message.role === 'system';
+    const isNavigation = message.role === 'navigation';
 
     // Only apply typewriter to latest assistant message
     const shouldType = isAssistant && isLatest;
@@ -90,18 +104,14 @@ const MessageBubble = ({ message, isLatest, onTypingComplete }) => {
         }
     }, [isTyping, displayedText, message.content, shouldType, onTypingComplete]);
 
-    // Render the content
     const content = shouldType ? displayedText : message.content;
 
-    // Simple markdown rendering
+    // Markdown rendering
     const renderMarkdown = (text) => {
         if (!text) return null;
         return text.split('\n').map((line, i) => {
-            // Bold
             line = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-            // Italic
             line = line.replace(/\*(.+?)\*/g, '<em>$1</em>');
-            // Bullet points
             if (line.startsWith('- ') || line.startsWith('• ')) {
                 return <li key={i} dangerouslySetInnerHTML={{ __html: line.substring(2) }} />;
             }
@@ -115,6 +125,20 @@ const MessageBubble = ({ message, isLatest, onTypingComplete }) => {
                 <span className="text-xs text-gray-500 bg-gray-800/50 px-3 py-1 rounded-full">
                     {content}
                 </span>
+            </div>
+        );
+    }
+
+    // Navigation message with clickable link
+    if (isNavigation) {
+        return (
+            <div className="flex justify-start mb-3">
+                <div className="bg-gray-800/60 rounded-xl px-4 py-2">
+                    <span className="text-gray-400 text-sm">📍 Want to learn more?</span>
+                    <div>
+                        <NavLink path={message.path}>{message.linkText}</NavLink>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -134,7 +158,6 @@ const MessageBubble = ({ message, isLatest, onTypingComplete }) => {
                 <div className="text-sm leading-relaxed">
                     {renderMarkdown(content)}
                 </div>
-                {/* Typing cursor */}
                 {shouldType && isTyping && (
                     <span className="inline-block w-0.5 h-4 bg-purple-400 ml-0.5 animate-pulse" />
                 )}
@@ -144,8 +167,6 @@ const MessageBubble = ({ message, isLatest, onTypingComplete }) => {
 };
 
 const GlobalChatbot = () => {
-    const navigate = useNavigate();
-
     // State
     const [isOpen, setIsOpen] = useState(false);
     const [isMinimized, setIsMinimized] = useState(false);
@@ -154,7 +175,6 @@ const GlobalChatbot = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isThinking, setIsThinking] = useState(false);
     const [hasAutoOpened, setHasAutoOpened] = useState(false);
-    const [isTypingMessage, setIsTypingMessage] = useState(false);
 
     const messagesEndRef = useRef(null);
     const inputRef = useRef(null);
@@ -195,7 +215,7 @@ const GlobalChatbot = () => {
                     setHasAutoOpened(true);
                     setMessages([{
                         role: 'assistant',
-                        content: `Welcome to the future. I'm Alex. Are you here to launch a quick store, or looking to automate your entire business with AI?`
+                        content: `Hey there! 👋 I'm Alex from VedaViks. What brings you here today?`
                     }]);
                 }
             }, 10000);
@@ -211,22 +231,31 @@ const GlobalChatbot = () => {
         };
     }, [isOpen, hasAutoOpened]);
 
-    // Handle tool calls
+    // Handle tool calls - show clickable link instead of auto-navigating
     const handleToolCall = useCallback((toolData) => {
         console.log('🔧 Tool call:', toolData);
 
         if (toolData.tool === 'navigateToPage' && toolData.path) {
+            const pathNames = {
+                '/contact': 'Go to Contact Form',
+                '/insights/packages': 'View Pricing',
+                '/services': 'See Our Services',
+                '/about': 'Learn About Us'
+            };
+
+            // Add a clickable navigation link instead of auto-redirecting
             setMessages(prev => [...prev, {
-                role: 'system',
-                content: `🔗 Taking you to ${toolData.path}...`
+                role: 'navigation',
+                path: toolData.path,
+                linkText: pathNames[toolData.path] || 'View Page',
+                content: pathNames[toolData.path]
             }]);
-            setTimeout(() => navigate(toolData.path), 800);
         }
-    }, [navigate]);
+    }, []);
 
     // Send message
     const sendMessage = async () => {
-        if (!inputValue.trim() || isLoading || isTypingMessage) return;
+        if (!inputValue.trim() || isLoading) return;
 
         const userMessage = { role: 'user', content: inputValue.trim() };
         const updatedMessages = [...messages, userMessage];
@@ -237,15 +266,15 @@ const GlobalChatbot = () => {
         setIsThinking(true);
 
         try {
-            // Random thinking delay (800-1500ms)
-            const thinkingDelay = Math.random() * 700 + 800;
+            // Shorter thinking delay (500-1000ms)
+            const thinkingDelay = Math.random() * 500 + 500;
             await new Promise(resolve => setTimeout(resolve, thinkingDelay));
 
             const response = await fetch(`${API_URL}/api/chat`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    messages: updatedMessages.filter(m => m.role !== 'system')
+                    messages: updatedMessages.filter(m => m.role === 'user' || m.role === 'assistant')
                 })
             });
 
@@ -264,9 +293,9 @@ const GlobalChatbot = () => {
                 content: data.response || "Let me think about that..."
             }]);
 
-            // Handle tool call
+            // Handle tool call (now shows clickable link, doesn't auto-navigate)
             if (data.tool) {
-                setTimeout(() => handleToolCall(data.tool), 500);
+                setTimeout(() => handleToolCall(data.tool), 300);
             }
 
         } catch (error) {
@@ -274,17 +303,17 @@ const GlobalChatbot = () => {
             setIsThinking(false);
             setMessages(prev => [...prev, {
                 role: 'assistant',
-                content: "Connection hiccup. Drop me an email at contact@vedaviksmedia.com and let's continue there."
+                content: "Oops, having a little trouble connecting. Can you try again? 😊"
             }]);
         } finally {
             setIsLoading(false);
         }
     };
 
-    // Handle typing complete
-    const handleTypingComplete = () => {
+    // Handle typing complete - re-enable input
+    const handleTypingComplete = useCallback(() => {
         setIsTypingMessage(false);
-    };
+    }, []);
 
     // Handle Enter key
     const handleKeyPress = (e) => {
@@ -300,10 +329,13 @@ const GlobalChatbot = () => {
         if (!isOpen && messages.length === 0) {
             setMessages([{
                 role: 'assistant',
-                content: "Welcome to the future. I'm Alex from VedaViks. Are you here to build a store, or looking to automate your business with AI?"
+                content: "Hey there! 👋 I'm Alex from VedaViks. What can I help you with today?"
             }]);
         }
     };
+
+    // Input should only be disabled during loading, not during typing animation
+    const isInputDisabled = isLoading;
 
     return (
         <>
@@ -320,7 +352,6 @@ const GlobalChatbot = () => {
                         className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full shadow-lg shadow-purple-500/30 flex items-center justify-center group"
                     >
                         <MessageCircle className="w-6 h-6 text-white" />
-                        {/* Pulse animation */}
                         <span className="absolute w-full h-full rounded-full bg-purple-500 animate-ping opacity-30" />
                     </motion.button>
                 )}
@@ -383,12 +414,11 @@ const GlobalChatbot = () => {
                                         <MessageBubble
                                             key={index}
                                             message={message}
-                                            isLatest={index === messages.length - 1}
+                                            isLatest={index === messages.length - 1 && message.role === 'assistant'}
                                             onTypingComplete={handleTypingComplete}
                                         />
                                     ))}
 
-                                    {/* Thinking indicator */}
                                     {isThinking && <TypingIndicator />}
 
                                     <div ref={messagesEndRef} />
@@ -404,14 +434,14 @@ const GlobalChatbot = () => {
                                             onChange={(e) => setInputValue(e.target.value)}
                                             onKeyPress={handleKeyPress}
                                             placeholder="Ask Alex anything..."
-                                            disabled={isLoading || isTypingMessage}
+                                            disabled={isInputDisabled}
                                             className="flex-1 bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-colors disabled:opacity-50"
                                         />
                                         <motion.button
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                             onClick={sendMessage}
-                                            disabled={!inputValue.trim() || isLoading || isTypingMessage}
+                                            disabled={!inputValue.trim() || isInputDisabled}
                                             className="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
                                             <Send className="w-4 h-4 text-white" />

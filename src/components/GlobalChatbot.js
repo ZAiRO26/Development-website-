@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send, Minimize2, Maximize2, Bot } from 'lucide-react';
 
@@ -127,8 +127,8 @@ const MessageBubble = ({ message, isLatest, onTypingComplete }) => {
         >
             <div
                 className={`max-w-[85%] px-4 py-3 rounded-2xl ${isAssistant
-                        ? 'bg-gray-800/80 text-gray-100 rounded-tl-sm'
-                        : 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-tr-sm'
+                    ? 'bg-gray-800/80 text-gray-100 rounded-tl-sm'
+                    : 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-tr-sm'
                     }`}
             >
                 <div className="text-sm leading-relaxed">
@@ -145,7 +145,6 @@ const MessageBubble = ({ message, isLatest, onTypingComplete }) => {
 
 const GlobalChatbot = () => {
     const navigate = useNavigate();
-    const location = useLocation();
 
     // State
     const [isOpen, setIsOpen] = useState(false);

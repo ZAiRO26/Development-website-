@@ -160,7 +160,7 @@ const LatestNews = () => {
                         {/* Curated Tag */}
                         <div className="flex items-center gap-2 text-xs text-gray-500">
                             <Sparkles className="w-3.5 h-3.5 text-purple-400" />
-                            <span>Curated by VedaViks AI</span>
+                            <span>Curated by CodeTazos AI</span>
                         </div>
                     </div>
 

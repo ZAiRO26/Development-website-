@@ -65,8 +65,8 @@ const Cookies = () => {
                         <h2 className="text-2xl font-bold text-white mb-6">Contact Us</h2>
                         <p className="text-neutral-slate">
                             If you have any questions about our Cookie Policy, please contact us at{' '}
-                            <a href="mailto:privacy@vedaviksmedia.com" className="text-accent-cyan hover:text-white transition-colors">
-                                privacy@vedaviksmedia.com
+                            <a href="mailto:privacy@codetazos.com" className="text-accent-cyan hover:text-white transition-colors">
+                                privacy@codetazos.com
                             </a>
                         </p>
                     </motion.div>

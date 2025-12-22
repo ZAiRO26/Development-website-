@@ -71,7 +71,7 @@ const About = () => {
     {
       name: "Anna Kowalski",
       role: "Senior Developer",
-      quote: "Working at VedaViks Media has been an incredible journey. The culture of innovation and continuous learning keeps me motivated every day.",
+      quote: "Working at CodeTazos has been an incredible journey. The culture of innovation and continuous learning keeps me motivated every day.",
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face"
     },
     {
@@ -83,7 +83,7 @@ const About = () => {
     {
       name: "Maria Garcia",
       role: "Project Manager",
-      quote: "VedaViks Media's commitment to excellence and client success is what makes this company truly special.",
+      quote: "CodeTazos's commitment to excellence and client success is what makes this company truly special.",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face"
     }
   ];
@@ -109,7 +109,7 @@ const About = () => {
             </FadeUp>
             <FadeUp delay={0.1}>
               <h1 className="section-title text-white mb-6 leading-tight">
-                About <span className="gradient-text">VedaViks Media</span>
+                About <span className="gradient-text">CodeTazos</span>
               </h1>
             </FadeUp>
             <FadeUp delay={0.2}>
@@ -161,7 +161,7 @@ const About = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-navy-secondary to-accent-cyan rounded-2xl transform rotate-3 opacity-50" />
                 <img
                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop"
-                  alt="VedaViks Media team"
+                  alt="CodeTazos team"
                   className="relative rounded-2xl w-full object-cover shadow-glow"
                 />
               </motion.div>
@@ -241,7 +241,7 @@ const About = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">Life at VedaViks Media</p>
+              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">Life at CodeTazos</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">

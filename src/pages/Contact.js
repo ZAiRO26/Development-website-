@@ -19,7 +19,7 @@ const Contact = () => {
       country: "United States",
       address: "350 Fifth Avenue, Suite 4800",
       phone: "+1 212 555 0123",
-      email: "newyork@vedaviksmedia.com",
+      email: "newyork@codetazos.com",
       hours: "9 AM - 6 PM EST",
     },
     {
@@ -27,7 +27,7 @@ const Contact = () => {
       country: "United Kingdom",
       address: "1 Canada Square, Canary Wharf",
       phone: "+44 20 7946 0958",
-      email: "london@vedaviksmedia.com",
+      email: "london@codetazos.com",
       hours: "9 AM - 5 PM GMT",
     },
     {
@@ -35,7 +35,7 @@ const Contact = () => {
       country: "Singapore",
       address: "1 Raffles Place, Tower 2",
       phone: "+65 6123 4567",
-      email: "singapore@vedaviksmedia.com",
+      email: "singapore@codetazos.com",
       hours: "9 AM - 6 PM SGT",
     }
   ];
@@ -45,22 +45,22 @@ const Contact = () => {
       icon: Briefcase,
       title: "Business Inquiries",
       description: "Let's talk about your project and how we can help you grow.",
-      contact: "hello@vedaviks.com",
-      link: "mailto:hello@vedaviks.com",
+      contact: "hello@codetazos.com",
+      link: "mailto:hello@codetazos.com",
     },
     {
       icon: Users,
       title: "Careers",
       description: "Join our team of talented professionals and shape the future.",
-      contact: "careers@vedaviks.com",
-      link: "mailto:careers@vedaviks.com",
+      contact: "careers@codetazos.com",
+      link: "mailto:careers@codetazos.com",
     },
     {
       icon: Megaphone,
       title: "Media & Press",
       description: "For all media inquiries, please get in touch with our team.",
-      contact: "press@vedaviks.com",
-      link: "mailto:press@vedaviks.com",
+      contact: "press@codetazos.com",
+      link: "mailto:press@codetazos.com",
     }
   ];
 

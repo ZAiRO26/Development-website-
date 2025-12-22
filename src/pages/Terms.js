@@ -56,7 +56,7 @@ const Terms = () => {
 
                         <h2 className="text-2xl font-bold text-white mb-6">4. Limitations</h2>
                         <p className="text-neutral-slate mb-6">
-                            In no event shall VedaViks Media or its suppliers be liable for any damages arising out
+                            In no event shall CodeTazos or its suppliers be liable for any damages arising out
                             of the use or inability to use the materials on our website, even if we have been
                             notified of the possibility of such damage.
                         </p>
@@ -70,8 +70,8 @@ const Terms = () => {
                         <h2 className="text-2xl font-bold text-white mb-6">6. Contact</h2>
                         <p className="text-neutral-slate">
                             For any questions regarding these Terms of Service, please contact us at{' '}
-                            <a href="mailto:legal@vedaviksmedia.com" className="text-accent-cyan hover:text-white transition-colors">
-                                legal@vedaviksmedia.com
+                            <a href="mailto:legal@codetazos.com" className="text-accent-cyan hover:text-white transition-colors">
+                                legal@codetazos.com
                             </a>
                         </p>
                     </motion.div>

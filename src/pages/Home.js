@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play, Code, Palette, Brain, Smartphone, Globe, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
-import AnimatedSection, { AnimatedItem, FadeUp, FloatingElement } from '../components/AnimatedSection';
+import AnimatedSection, { AnimatedItem, FadeUp, FloatingElement, Card3DReveal } from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
+import SplitText from '../components/SplitText';
+
+// Lazy load 3D component for performance
+const Hero3D = lazy(() => import('../components/Hero3D'));
 
 const Home = () => {
 
@@ -99,33 +103,39 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-background-dark overflow-hidden">
-      {/* Hero Section with Video Background */}
+      {/* Hero Section with 3D Background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
+        {/* 3D Background */}
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/hero-video.mp4" type="video/mp4" />
-          </video>
-          {/* Dark overlay for readability */}
-          <div className="absolute inset-0 bg-black/60" />
+          <Suspense fallback={
+            <div className="w-full h-full bg-gradient-to-br from-background-dark via-purple-900/20 to-background-dark" />
+          }>
+            <Hero3D />
+          </Suspense>
+          {/* Gradient overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background-dark/40 via-transparent to-background-dark/80" />
         </div>
 
         <div className="container-custom relative z-10 pt-32 pb-20">
           <div className="text-center max-w-5xl mx-auto">
             <FadeUp delay={0.2}>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
-                Your Vision, <span className="text-primary">Engineered.</span>
+              <h1 className="section-title-xl text-white mb-8">
+                Your <span className="headline-serif-italic text-primary">Vision,</span>
+                <br />
+                <SplitText
+                  className="headline-serif-bold"
+                  splitBy="letter"
+                  delay={0.3}
+                  stagger={0.04}
+                  animation="fadeUp"
+                >
+                  Engineered.
+                </SplitText>
               </h1>
             </FadeUp>
 
             <FadeUp delay={0.4}>
-              <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-body text-xl md:text-2xl text-white/60 mb-12 max-w-3xl mx-auto leading-relaxed">
                 We provide a complete suite of development and marketing services for industrial businesses. Let us handle the tech, so you can focus on growth.
               </p>
             </FadeUp>
@@ -192,7 +202,7 @@ const Home = () => {
           {/* Bento Grid */}
           <AnimatedSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerChildren={0.1}>
             {services.map((service, index) => (
-              <AnimatedItem key={service.title}>
+              <Card3DReveal key={service.title}>
                 <Link to={service.href}>
                   <motion.div
                     className="bento-card group cursor-pointer h-full"
@@ -214,7 +224,7 @@ const Home = () => {
                     </div>
                   </motion.div>
                 </Link>
-              </AnimatedItem>
+              </Card3DReveal>
             ))}
           </AnimatedSection>
         </div>

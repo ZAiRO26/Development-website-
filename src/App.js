@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import Navbar from './components/Navbar';
+import FloatingNav from './components/FloatingNav';
 import Footer from './components/Footer';
-import PageTransition from './components/PageTransition';
+import CinematicTransition from './components/CinematicTransition';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import Products from './pages/Products';
@@ -26,6 +26,8 @@ import ScrollToTopButton from './components/ScrollToTopButton';
 import WhatsAppFloatingButton from './components/WhatsAppFloatingButton';
 import GlobalChatbot from './components/GlobalChatbot';
 import SmoothScroll from './components/SmoothScroll';
+import ImmersiveBackground from './components/ImmersiveBackground';
+
 
 // Animated Routes component for page transitions
 function AnimatedRoutes() {
@@ -35,34 +37,34 @@ function AnimatedRoutes() {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         {/* Main Pages */}
-        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-        <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
-        <Route path="/services/products" element={<PageTransition><Products /></PageTransition>} />
-        <Route path="/services/:slug" element={<PageTransition><ServiceDetail /></PageTransition>} />
-        <Route path="/industries" element={<PageTransition><Industries /></PageTransition>} />
-        <Route path="/industries/:slug" element={<PageTransition><IndustryDetail /></PageTransition>} />
-        <Route path="/clients" element={<PageTransition><Clients /></PageTransition>} />
-        <Route path="/clients/case-studies" element={<PageTransition><Clients /></PageTransition>} />
-        <Route path="/clients/projects" element={<PageTransition><Clients /></PageTransition>} />
-        <Route path="/clients/case-study/:id" element={<PageTransition><CaseStudyDetail /></PageTransition>} />
-        <Route path="/about" element={<PageTransition><About /></PageTransition>} />
-        <Route path="/about/how-we-work" element={<PageTransition><About /></PageTransition>} />
-        <Route path="/about/sustainability" element={<PageTransition><About /></PageTransition>} />
-        <Route path="/about/careers" element={<PageTransition><About /></PageTransition>} />
-        <Route path="/insights" element={<PageTransition><Insights /></PageTransition>} />
-        <Route path="/insights/blog" element={<PageTransition><Insights /></PageTransition>} />
-        <Route path="/insights/newsletters" element={<PageTransition><Insights /></PageTransition>} />
-        <Route path="/insights/packages" element={<PageTransition><Packages /></PageTransition>} />
-        <Route path="/latest-news" element={<PageTransition><LatestNews /></PageTransition>} />
-        <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+        <Route path="/" element={<CinematicTransition><Home /></CinematicTransition>} />
+        <Route path="/services" element={<CinematicTransition><Services /></CinematicTransition>} />
+        <Route path="/services/products" element={<CinematicTransition><Products /></CinematicTransition>} />
+        <Route path="/services/:slug" element={<CinematicTransition><ServiceDetail /></CinematicTransition>} />
+        <Route path="/industries" element={<CinematicTransition><Industries /></CinematicTransition>} />
+        <Route path="/industries/:slug" element={<CinematicTransition><IndustryDetail /></CinematicTransition>} />
+        <Route path="/clients" element={<CinematicTransition><Clients /></CinematicTransition>} />
+        <Route path="/clients/case-studies" element={<CinematicTransition><Clients /></CinematicTransition>} />
+        <Route path="/clients/projects" element={<CinematicTransition><Clients /></CinematicTransition>} />
+        <Route path="/clients/case-study/:id" element={<CinematicTransition><CaseStudyDetail /></CinematicTransition>} />
+        <Route path="/about" element={<CinematicTransition><About /></CinematicTransition>} />
+        <Route path="/about/how-we-work" element={<CinematicTransition><About /></CinematicTransition>} />
+        <Route path="/about/sustainability" element={<CinematicTransition><About /></CinematicTransition>} />
+        <Route path="/about/careers" element={<CinematicTransition><About /></CinematicTransition>} />
+        <Route path="/insights" element={<CinematicTransition><Insights /></CinematicTransition>} />
+        <Route path="/insights/blog" element={<CinematicTransition><Insights /></CinematicTransition>} />
+        <Route path="/insights/newsletters" element={<CinematicTransition><Insights /></CinematicTransition>} />
+        <Route path="/insights/packages" element={<CinematicTransition><Packages /></CinematicTransition>} />
+        <Route path="/latest-news" element={<CinematicTransition><LatestNews /></CinematicTransition>} />
+        <Route path="/contact" element={<CinematicTransition><Contact /></CinematicTransition>} />
 
         {/* Legal Pages */}
-        <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
-        <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
-        <Route path="/cookies" element={<PageTransition><Cookies /></PageTransition>} />
+        <Route path="/privacy" element={<CinematicTransition><Privacy /></CinematicTransition>} />
+        <Route path="/terms" element={<CinematicTransition><Terms /></CinematicTransition>} />
+        <Route path="/cookies" element={<CinematicTransition><Cookies /></CinematicTransition>} />
 
         {/* 404 */}
-        <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+        <Route path="*" element={<CinematicTransition><NotFound /></CinematicTransition>} />
       </Routes>
     </AnimatePresence>
   );
@@ -72,17 +74,19 @@ function App() {
   return (
     <Router>
       <SmoothScroll>
-        <ScrollToTop />
-        <div className="min-h-screen bg-background-dark text-white">
-          <Navbar />
-          <main>
-            <AnimatedRoutes />
-          </main>
-          <Footer />
-          <GlobalChatbot />
-          <WhatsAppFloatingButton />
-          <ScrollToTopButton />
-        </div>
+        <ImmersiveBackground>
+          <ScrollToTop />
+          <div className="min-h-screen text-white">
+            <FloatingNav />
+            <main>
+              <AnimatedRoutes />
+            </main>
+            <Footer />
+            <GlobalChatbot />
+            <WhatsAppFloatingButton />
+            <ScrollToTopButton />
+          </div>
+        </ImmersiveBackground>
       </SmoothScroll>
     </Router>
   );

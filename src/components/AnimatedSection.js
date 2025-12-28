@@ -320,4 +320,32 @@ export const RevealText = ({
     );
 };
 
+
+// 3D Card Flip Animation for futuristic reveal
+export const Card3DReveal = ({
+    children,
+    className = '',
+    delay = 0,
+    once = true
+}) => {
+    return (
+        <motion.div
+            className={className}
+            initial={{ opacity: 0, rotateX: 90, y: 50 }}
+            whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
+            viewport={{ once, amount: 0.2 }}
+            transition={{
+                duration: 0.8,
+                delay,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+            }}
+            style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+        >
+            {children}
+        </motion.div>
+    );
+};
+
 export default AnimatedSection;

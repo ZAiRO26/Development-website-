@@ -6,8 +6,8 @@ import AnimatedSection, { AnimatedItem, FadeUp, FloatingElement, Card3DReveal } 
 import MagneticButton from '../components/MagneticButton';
 import SplitText from '../components/SplitText';
 
-// Lazy load 3D component for performance
-const Hero3D = lazy(() => import('../components/Hero3D'));
+// Lazy load WebGL component for performance
+const WebGLHero = lazy(() => import('../components/WebGLHero'));
 
 const Home = () => {
 
@@ -103,14 +103,14 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-background-dark overflow-hidden">
-      {/* Hero Section with 3D Background */}
+      {/* Hero Section with WebGL 3D Background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* 3D Background */}
+        {/* WebGL 3D Background */}
         <div className="absolute inset-0 z-0">
           <Suspense fallback={
             <div className="w-full h-full bg-gradient-to-br from-background-dark via-purple-900/20 to-background-dark" />
           }>
-            <Hero3D />
+            <WebGLHero />
           </Suspense>
           {/* Gradient overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-background-dark/40 via-transparent to-background-dark/80" />
